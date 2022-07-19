@@ -15,6 +15,5 @@ Contents
 
 .. toctree::
 
-   usage
-   api
    about
+   usage
