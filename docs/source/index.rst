@@ -1,9 +1,9 @@
 Welcome to Operator Curator's documentation!
 ============================================
 
-**Curator** (/ˈkyo͝orˌādər/) is an infrastructure consumption analysis project for OpenShift Container Platform.
+**Curator** (/ˈkyo͝orˌādər/) is an air-gapped infrastructure consumption analysis project for OpenShift Container Platform.
 
-Check out the :doc:`usage` section for further information, including
+Check out the :doc:`about` section for further information, including
 how to :ref:`installation` the project.
 
 .. note::
@@ -17,3 +17,4 @@ Contents
 
    usage
    api
+   about
