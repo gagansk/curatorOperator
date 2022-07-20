@@ -1,10 +1,10 @@
-About
-=====
+**About**
+=========
 
 .. _operator-curator:
 
-**Operator Curator**
---------------------
+Operator Curator
+----------------
 
 Operator Curator is an air-gapped infrastructure consumption analysis tool for the Red Hat OpenShift Container Platform. Curator retrieves infrastructure utilization for the OpenShift Platform using Operator koku-metrics and provides users the ability to query the infrastructure utilization based on time period, namespace, and infrastructure parameters. 
 
@@ -14,8 +14,8 @@ You need to have administrator access to an OpenShift v.4.5+ cluster to deploy O
 
 .. _operator-koku-metrics:
 
-**Operator Koku-metrics**
--------------------------
+Operator Koku-metrics
+---------------------
 
 Operator Koku-metrics can be used to obtain Red Hat OpenShift Container Platform (OCP) usage data and upload it to koku. The Koku-metrics operator utilizes Golang to collect usage data from an OCP cluster installation. You must have access to an OpenShift v.4.5+ cluster.
 
