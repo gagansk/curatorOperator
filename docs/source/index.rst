@@ -18,4 +18,6 @@ Contents
    about
    usage
    features
+   systemDesign
+   installation
 
