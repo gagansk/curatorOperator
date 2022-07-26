@@ -20,4 +20,5 @@ Contents
    features
    systemDesign
    installation
+   api
 
