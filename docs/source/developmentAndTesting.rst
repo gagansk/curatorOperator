@@ -27,7 +27,7 @@ How to contribute to this project
 
 This will serve as a kick-start guide for anyone who is willing to contribute to this project. Any changes, bug fixes or enhancements are always welcome.
 
-Adding new Custom resources(CRs):
+Adding new Custom resources(CRs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Custom resources help in modifying the way our system behaves up to a certain extent. Variables such as DB connections, email accounts and
@@ -47,7 +47,7 @@ CRs and create the manifests.
 These parameters can be accessed in your controller code and can be used for any logical implementation.
 Check the existing code to find examples in the ``controller/*`` directory.
 
-Modifying DB:
+Modifying DB
 ^^^^^^^^^^^^^
 
 Most of the core logic for report generation is built around the DB function and tables. You may want to have a tweak at it.
@@ -59,7 +59,7 @@ the logic for generating new reports.
 This logic is run when the controller is set up for the first time, hence creating DB tables and functions on the attached Database. If you run into issues while deploying this code, check the debugging
 section for any help.
 
-Creating new controllers:
+Creating new controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For some new additional features it might be handy to create a new controller, for this there 2 important things that have to be in place:
@@ -70,7 +70,7 @@ For some new additional features it might be handy to create a new controller, f
 As this is a generic topic, hence attaching a link on how to create a new API group and a controller: `Create a new API and Controller <https://sdk.operatorframework.io/docs/building-operators/golang/tutorial/#create-a-new-api-and-controller>`_
 
 
-The containers:
+The containers
 ^^^^^^^^^^^^^^^
 
 Some of the logic exists inside a container that runs when we either call FetchData or the Report controllers.
@@ -90,8 +90,8 @@ Currently, as there are no unit tests or testing frameworks it's important to te
 Below are a few steps or tests that can be run on the project to verify that nothing breaks. 
 
 
-Testing Day reports:
-^^^^^^^^^^^^^^^^^^^^
+Testing Day reports
+^^^^^^^^^^^^^^^^^^^
 
 Day reports are currently run at a particular time(currently at 8:05 PM EST) but for testing the changes its not practical to wait
 so long, hence change the time in the ``controllers/report_controller.go``. Setting values like "\*/2 * * \*" would run the reports every 2 minutes. 
@@ -100,7 +100,7 @@ Tip: use https://crontab.guru/ to get cron job configuration.
 
 Note: Running Day/Month/Weekly reports keeps updating the reports_human table with duplicate data, hence test it only in a controlled DB environment.
 
-Steps to test day reports:
+Steps to test day reports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     ``make manifests``
@@ -122,7 +122,7 @@ Verify the logs in the Day report container in the ``koku-metrics-operator`` nam
 **Expected Result:** ``generate_report`` function should be called with the right frequency and the ``reports_human`` table should be populated with new data.
 
 
-Database creation:
+Database creation
 ^^^^^^^^^^^^^^^^^^
 
 The below steps can be used to verify the DB creation in the psql. Deploying the operator connects the DB and deploys the Tables and Functions
@@ -154,7 +154,7 @@ automatically.
     
     Expected Result: No changes in the DB.
     
-Fetch Data controller:
+Fetch Data controller
 ^^^^^^^^^^^^^^^^^^^^^^
 
 FetchData controller has a minimal job of fetching the data from the koku-metrics operator and populating the curator DB logs tables.
@@ -170,7 +170,7 @@ But for testing, you could run it instantly.
 
 **Expected Results:** logs_0, logs_1, and logs_2 tables will be populated with the latest data from koku-metrics-operator.
 
-Sanity of the data generated:
+Sanity of the data generated
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Any changes to the report_human table will need some sanity testing to be done in order to verify the results.
