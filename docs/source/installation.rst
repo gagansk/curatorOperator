@@ -1,20 +1,56 @@
-**Installation and maintenance**
+**Installation**
 ================================
 
-Install Operator Curator
+Deploying the Operator
+------------------------
+Clone the curator operator `repository. <https://github.com/operate-first/curator-operator>`_
+
+
+Currently, we have two versions of the curator operator.
+
+v0.0.1 - Curator operator with basic features (Periodic Reports, Custom reports)
+
+v0.0.2 - Curator with additional features (Mailing services, S3 backup)
+
+============
+TODO NEED TO BUILD IMAGES
+============
+
+**To deploy the operator you can use one of the two above images.**
+
+      .. code:: yaml
+          
+          #cd curator-operator/
+          make deploy IMG=quay.io/operate-first/curator-operator
+
+
+
+**You can build and deploy Operator on your own**
+
+First, create the *curator-operator-system* project. This is where we are going to deploy Curator Operator.
+
+Before running the operator, the CRD must be registered with the Kubernetes apiserver:
+
+      .. code:: yaml
+       
+       #cd curator-operator/
+       make manifests
+       make generate
+       make install
+       make docker-build docker-push IMG=quay.io/<user-name>/<image-name>
+       make deploy IMG=quay.io/<user-name>/<image-name>
+
+
+
+Undeploy the Operator
 ------------------------
 
-As a cluster administrator, you can install the Operator Curator from OperatorHub using the OpenShift Container Platform web console or CLI. Subscribing an Operator to one or more namespaces makes the Operator available to developers on your cluster.
+      .. code:: yaml
+          
+          #cd curator-operator/
+          make undeploy
 
-Update Operator Curator
------------------------
+The above command will delete everything including the project.
 
-The subscription of an installed Operator Curator specifies an update channel, which is used to track and receive updates for the Operator. To upgrade the Operator to start tracking and receiving updates from a newer channel, you can change the update channel in the subscription.
-
-If the approval strategy in the subscription is set to “Automatic”, the upgrade process initiates as soon as a new Curator version is available in the selected channel. If the approval strategy is set to Manual, you must manually approve pending upgrades.
-
-Delete Operator Curator 
------------------------
-Cluster administrators can delete installed Operator Curator from a selected namespace by using the web console in the Operator Lifecycle Manager (OLM) on your OpenShift Container Platform cluster or through CLI. 
 
 
