@@ -103,19 +103,21 @@ Note: Running Day/Month/Weekly reports keeps updating the reports_human table wi
 Steps to test day reports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    ``make manifests``
+    .. code-block:: shell
 
-    ``make generate``
+        make manifests
+      
+        make generate
+      
+        make install
 
-    ``make install``
+        make docker-build IMG=docker.io/user/name:version #suggest you to use this format when developing 
 
-    ``make docker-build IMG=docker.io/user/name:version``
+        make docker-push IMG=docker.io/user/name:version
 
-    ``make docker-push IMG=docker.io/user/name:version``
+        make deploy IMG=docker.io/user/name:version
 
-    ``make deploy IMG=docker.io/user/name:version``
-
-    ``oc apply -f path_to_report_yaml/curator_v1alpha1_report.yaml``
+        oc apply -f path_to_report_yaml/curator_v1alpha1_report.yaml
 
 Verify the logs in the Day report container in the ``koku-metrics-operator`` namespace. Also, verify the reports_human table in the DB.
 

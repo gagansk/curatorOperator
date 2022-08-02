@@ -18,7 +18,7 @@ Data pipelining
 ---------------
 OCP administrators can run scripts that are packaged in the Curator to stream the infrastructure utilization data collected by Curator to their database for any internal billing machine. 
 
-Mailing services
+Mailing services (Optional)
 ----------------
 Using Curator, OCP administrators will have the ability to automatically send reports that are generated to any email addresses. 
 
