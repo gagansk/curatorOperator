@@ -23,3 +23,4 @@ Contents
    installation
    api
    developmentAndTesting
+   FAQs
