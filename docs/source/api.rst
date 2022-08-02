@@ -12,9 +12,9 @@ Deploy the API to Openshift
       .. code:: init
 
         oc port-forward <curator-operator-pod> 5000:8082
-        curl -XGET "http://localhost:5000/download?start=2022-07-22%2003:00:00.000000&end=2022-07-23%2004:00:00.000000"
+        curl "http://localhost:5000/download?start=2022-04-09%2020:00:00&end=2022-04-11%2021:32:23" -o <report-folder-name>
 
-        ``start`` and ``end`` parameters will be cast to PostgreSQL timestamp. Therefore multiple formats are supported.
+      ``start`` and ``end`` parameters will be cast to PostgreSQL timestamp. Therefore multiple formats are supported.
 
       Downloaded report follows similar structure of a Koku-Metrics-Operator uploaded report.
       ::
