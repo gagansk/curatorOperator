@@ -8,7 +8,7 @@ Prerequisite
 
 **Admin access to OpenShift 4.5+**
 
-**Operator-SDK 1.17+ and Go version 1.17+**
+Currently, we are using **Operator-SDK v1.17.0, Go v1.17.6, Postgres v13.4, and koku-metrics-operator v1.1.7**
 
 
 **Install Koku Metrics Operator**
@@ -28,9 +28,9 @@ Prerequisite
 
 **Install PostgreSQL Image**
 
-* Need to have postgres database up and running in cluster to store all information.
+* Need to have Postgres database up and running in a cluster to store all information.
 
-* We are currently using postgres version 13.4 and config file specified `sample. <https://github.com/operate-first/curator-operator/blob/main/Documentation/config/postgres-database-cfg.yaml>`_
+* We are currently using Postgres version 13.4 and config file specified `sample. <https://github.com/operate-first/curator-operator/blob/main/Documentation/config/postgres-database-cfg.yaml>`_
 
 
 **Create database secrets**
