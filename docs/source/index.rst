@@ -19,6 +19,7 @@ Contents
    usage
    features
    systemDesign
+   requirements
    installation
    api
    developmentAndTesting
