@@ -1,3 +1,7 @@
+=================================
+**FAQs**
+=================================
+
 1. What are the report parameters?
 ----------------------------------
 Below is the list of report parameters and their significance in the reports. The reports are stored in the ``reports_human`` table.
@@ -45,3 +49,12 @@ Below is the list of report parameters and their significance in the reports. Th
    * - persistent_volume_claim_usage_total
      - Average usage of the PVC in a particular namespace
      - Gigabytes[GB]
+
+2. How to check for reports?
+----------------------------
+There are a few things that you should verify before checking for reports or logs:
+
+- Verify the pod is in a completed state(This ensures that there was no error when the pod ran)
+- Check for logs in the pod(This should show some values)
+
+Once these 2 checks are done you can connect to a pod by either an OpenShift terminal or by port forwarding the pod. The PSQL DB should have 3 log tables and 1 reports_human table which will be populated with data.
