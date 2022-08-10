@@ -63,7 +63,7 @@ Deploy the API to Openshift
 
         # config/samples/curator_v1alpha1_reportapi.yaml
         apiVersion: curator.operatefirst.io/v1alpha1
-        kind: ReportApi
+        kind: ReportAPI
         namespace: report-system
         metadata:
           name: timeframe-report-sample
@@ -71,7 +71,7 @@ Deploy the API to Openshift
           reportingStart: "2022-07-18T00:00:00Z"
           reportingEnd: "2022-07-20T00:00:00Z"  # prevents Reports targeting future time
           namespace: koku-metrics-operator
-          metricsName: ["pod", "pod_usage_cpu_core_seconds"]
+          metricsName: ["pod", "pod_request_cpu_core_seconds"]
 
       **Method 2**: Standard daily, weekly, monthly report
 
@@ -83,7 +83,7 @@ Deploy the API to Openshift
 
         # config/samples/curator_v1alpha1_reportapi.yaml
         apiVersion: curator.operatefirst.io/v1alpha1
-        kind: ReportApi
+        kind: ReportAPI
         namespace: report-system
         metadata:
           name: daily-report-sample
@@ -91,7 +91,7 @@ Deploy the API to Openshift
           reportingEnd: "2022-07-20T00:00:00Z"  # prevents Reports targeting future time
           reportPeriod: Day
           namespace: koku-metrics-operator
-          metricsName: ["pod", "pod_usage_cpu_core_seconds"]
+          metricsName: ["pod", "pod_request_cpu_core_seconds"]
 
       Create one of the two Reports above you just defined:
 
