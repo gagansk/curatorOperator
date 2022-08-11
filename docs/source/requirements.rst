@@ -30,12 +30,11 @@ Currently, we are using **Operator-SDK v1.17.0, Go v1.17.6, Postgres v13.4, and 
 
 * Need to have Postgres database up and running in a cluster to store all information.
 
-* We are currently using Postgres version 13.4 and config file specified `sample. <https://github.com/operate-first/curator-operator/blob/main/Documentation/config/postgres-database-cfg.yaml>`_
-
+* We are currently using Postgres version 13.4 and config file specified `sample <https://github.com/operate-first/curator-operator/blob/main/Documentation/config/postgres-database-cfg.yaml>`_ or you can use this `sample <https://github.com/operate-first/curator-operator/blob/operator-additional-features/Documentation/config/postgres-database-monitor.yaml>`_ for the database utilization alert feature for which you need to provide values for EMAIL_USER, EMAIL_PASS, EMAIL_RECI, MEM_LIMIT env variables.
 
 **Create database secrets**
   
-* First, create project/namespace using below command or web console
+* First, create project/namespace using the below command or web console
   
         ::
 

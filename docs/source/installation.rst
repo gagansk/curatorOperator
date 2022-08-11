@@ -33,14 +33,68 @@ Deploying the Operator
 
 3. **Create below two custom resources**
  
-* FetchData custom resource to fetch data from koku-metrics-operator. `Sample CR <https://github.com/operate-first/curator-operator/blob/operator-additional-features/config/samples/curator_v1alpha1_fetchdata.yaml>`_
+  * FetchData custom resource to fetch data from koku-metrics-operator. `Sample CR <https://github.com/operate-first/curator-operator/blob/operator-additional-features/config/samples/curator_v1alpha1_fetchdata.yaml>`_
 
-* Report custom resource to generate the automatic report. `Sample CR <https://github.com/operate-first/curator-operator/blob/operator-additional-features/config/samples/curator_v1alpha1_report.yaml>`_
-  
+    .. code:: yaml
+          
+      #config/samples/curator_v1alpha1_fetchdata.yaml
+      apiVersion: curator.operatefirst.io/v1alpha1
+      kind: FetchData
+      metadata:
+        name: fetchdata-sample
+      spec:
+        cronjobNamespace: koku-metrics-operator
+        schedule: "0 */6 * * *"  # This job will run every 6 hours. You can also use " schedule: '* * * * *' " to run this cron job instantly
+        backupSrc: /tmp/koku-metrics-operator-data/upload
+        unzipDir: /tmp/koku-metrics-operator-data/s3sync
+        has_s3_access: <true if you want to save files in s3 bucket else, false>
+        aws_access_key_id: <if has_s3_access variable is true provide the credentials, else nil>
+        aws_secret_access_key: <if has_s3_access variable is true provide the credentials, else nil>
+        bucket_name: <if has_s3_access variable is true provide the S3 bucket name, else nil>
+        s3_host_name: <if has_s3_access variable is true provide the hostname, else nil>
+        databaseCleanUp: <true if you want to database cleanup else, false>
+        databaseCleanUpDuration: <if databaseCleanUp variable is true provide the databaseCleanUpDuration, else nil>
+
+    
+    If you would like to have the S3 backup or remove old records from a database features enable you need to provide values to fields
+
+    .. code:: yaml
+
+       # update the cronjobNamespace field to the correct namespace where you installed koku-metrics-operator
+       oc apply -f config/samples/curator_v1alpha1_fetchdata.yaml
+
+
+  * Report custom resource to generate the automatic report. `Sample CR <https://github.com/operate-first/curator-operator/blob/operator-additional-features/config/samples/curator_v1alpha1_report.yaml>`_
+
+
+    .. code:: yaml
+
+       #config/samples/curator_v1alpha1_report.yaml
+       apiVersion: curator.operatefirst.io/v1alpha1
+       kind: Report
+       metadata:
+         name: day-report
+       spec:
+         cronjobNamespace: koku-metrics-operator
+         scheduleForReport: "*/5 * * * *"
+         databaseName: <database-name>
+         databasePassword: <password>
+         databaseUser: <user-name>
+         databaseHostName: <hostname or host ip>
+         databasePort: <port-number>
+         reportFrequency: <day,week or month>
+         emailReports: <boolean value> #if this value is true then input the below values
+         emailUser: <sender email>
+         emailPassword: <Password>
+         emailRecepients: '{"user1@redhat.com":{"cc":["user2@gmail.com"]}}'
+
+
+    Also, If you would like to automatically send reports that are generated to any email addresses you need to provide values to the above fields
+
    .. code:: yaml
           
        # update the cronjobNamespace field to the correct namespace where you installed koku-metrics-operator
-       oc apply -f <cr-file-path>
+       oc apply -f config/samples/curator_v1alpha1_report.yaml
 
 
 Uninstall a CustomResourceDefinition
