@@ -64,9 +64,9 @@ Deploy the API to Openshift
         # config/samples/curator_v1alpha1_reportapi.yaml
         apiVersion: curator.operatefirst.io/v1alpha1
         kind: ReportAPI
-        namespace: report-system
         metadata:
           name: timeframe-report-sample
+          namespace: report-system
         spec:
           reportingStart: "2022-07-18T00:00:00Z"
           reportingEnd: "2022-07-20T00:00:00Z"  # prevents Reports targeting future time
@@ -84,9 +84,9 @@ Deploy the API to Openshift
         # config/samples/curator_v1alpha1_reportapi.yaml
         apiVersion: curator.operatefirst.io/v1alpha1
         kind: ReportAPI
-        namespace: report-system
         metadata:
           name: daily-report-sample
+          namespace: report-system
         spec:
           reportingEnd: "2022-07-20T00:00:00Z"  # prevents Reports targeting future time
           reportPeriod: Day
